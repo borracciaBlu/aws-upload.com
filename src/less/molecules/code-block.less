@@ -1,0 +1,69 @@
+.content figure {
+    margin: 1.2em 0;
+}
+.highlight {
+    overflow-x: auto;
+    position: relative;
+    z-index: 1;
+    padding: 0;
+    background-color: #f8f8f8;
+    padding: 0.8em 0.8em 0em;
+    border-radius: 2px;
+    margin-bottom: 24px;
+}
+.highlight table, .highlight tr, .highlight td {
+    width: 100%;
+    border-collapse: collapse;
+    padding: 0;
+    margin: 0;
+}
+.highlight .code pre {
+    padding: 1.2em 1.4em;
+    line-height: 0.5em;
+    margin: 0;
+}
+
+.highlight .code .line {
+    min-height: 0.5em;
+}
+
+pre .comment, pre .java .annotation, pre .python .decorator, pre .template_comment, pre .pi, pre .doctype, pre .deletion, pre .shebang, pre .apache .sqbracket, pre .tex .formula {
+    color: #b3b3b3;
+}
+
+.highlight .code .line {
+    min-height: 0.6em;
+}
+
+.highlight.bash .code:after {
+    content: 'Shell';
+}
+
+.highlight.js .code:after {
+    content: 'js';
+}
+
+.highlight.html .code:after, .highlight.js .code:after, .highlight.bash .code:after, .highlight.css .code:after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #ccc;
+    text-align: right;
+    font-size: 0.75em;
+    padding: 5px 10px 0;
+    line-height: 15px;
+    height: 15px;
+    font-weight: 600;
+}
+
+code, pre {
+    font-family: Monaco, courier, monospace;
+    font-size: 0.8em;
+    background-color: #f8f8f8;
+    -webkit-font-smoothing: initial;
+    -moz-osx-font-smoothing: initial;
+}
+
+pre span {
+	color: #fa4957;
+}

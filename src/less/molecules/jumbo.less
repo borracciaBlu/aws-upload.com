@@ -1,0 +1,54 @@
+.jumbo {
+	padding: 5em 0;
+    background: #fff;
+    overflow: hidden;
+}
+
+.jumbo--text {
+	width: 40%;
+	float: left;
+	padding: 6em 0;
+
+	@media (max-width: 768px) {
+	    width: 80%;
+    	float: none;
+		padding: 6em 0;
+    	margin: auto;
+    	text-align: center;
+	}
+
+	@media (max-width: 500px) {
+		h1 {
+			font-size: 2em;
+		    line-height: 1.2;
+		}
+	}
+
+	@media (max-width: 400px) {
+	    width: 100%;
+	}
+
+}
+
+.jumbo--img {
+	width: 60%;
+	float: left;
+	text-align: right;
+
+	@media (max-width: 1025px) {
+		img {
+			width: 600px;
+		}
+	}
+
+	@media (max-width: 768px) {
+	    width: 100%;
+    	float: none;
+    	margin: auto;
+    	text-align: center;
+	}
+	
+	@media (max-width: 621px) {
+		display: none;
+	}
+}

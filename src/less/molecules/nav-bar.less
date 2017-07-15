@@ -1,0 +1,168 @@
+.nav-bar {
+    height: 60px;
+    border-bottom: 1px solid #FA4957;
+    margin-bottom: 11px;
+    background: #fff;
+    box-shadow: 0 0 1px 1px rgba(13, 49, 68, 0.15);
+
+    @media (max-width:920px) {
+        text-align: center;
+        position: fixed;
+        width: 100%;
+        top: 0px;
+        z-index: 10;
+    }
+    
+    &.fixed {
+        position: fixed;
+        top: 0px;
+        width: 100%;
+        z-index: 10;
+    }
+}
+
+.nav-bar--menu {
+    float: right;
+    padding: 22px 0;
+
+    @media (max-width:920px) {
+        display: none;
+    }
+}
+
+.nav-bar--link {
+    color: #0d3144;
+    font-size: 14px;
+    padding: 0 0 0 12px;
+
+    &:hover {
+        color: #ff6058;
+    }
+}
+
+.nav-bar--logo { 
+    height: 36px;
+    padding: 12px 0;
+
+    @media (max-width:920px) {
+        height: 24px;
+        padding: 18px 0;
+    }
+}
+
+// Burger menu button
+.nav-bar--burger {
+    // 28px: 28px;
+    // 4px: 4px;
+    
+    display: none;
+    border: 0;
+    background: none;
+    outline: 0;
+    padding: 0;
+    cursor: pointer;
+
+    border-bottom: 2px solid #0d3144;
+    width: 28px;
+
+    transition: border-bottom 1s ease-in-out;
+    -webkit-transition: border-bottom 1s ease-in-out; 
+    
+
+    @media (max-width:920px) {
+        display: inline-block;
+        margin-top: 23px;
+        position: absolute;
+        right: 20px;
+    }
+
+    // Fix for extra space in Firefox
+    &::-moz-focus-inner {
+        border: 0;
+        padding: 0;
+    }    
+
+    &:before {
+        content: "";
+        display: block;
+        border-bottom: 2px solid #0d3144;
+        width: 100%;
+        margin-bottom: 5px;
+        transition: transform 0.5s ease-in-out;    
+        -webkit-transition: -webkit-transform 0.5s ease-in-out;        
+    }
+
+    &:after {
+        content: "";
+        display: block;
+        border-bottom: 2px solid #0d3144;
+        width: 100%;
+        margin-bottom: 5px;
+        transition: transform 0.5s ease-in-out;
+        -webkit-transition: -webkit-transform 0.5s ease-in-out;
+    }
+
+    &.open {
+        border-bottom: 2px solid transparent;
+        transition: border-bottom 0.8s ease-in-out;
+        -webkit-transition: border-bottom 0.8s ease-in-out;
+        margin-top: 29px;
+
+        &:before {
+            transform: rotate(-405deg) translateY(1px) translateX(-1px);
+            -webkit-transform: rotate(-405deg) translateY(1px) translateX(-1px);      
+            transition: transform 0.5s ease-in-out;
+            -webkit-transition: -webkit-transform 0.5s ease-in-out;
+        }
+
+        &:after {
+            transform: rotate(405deg) translateY(-4px) translateX(-5px); 
+            -webkit-transform: rotate(405deg) translateY(-4px) translateX(-5px);       
+            transition: transform 0.5s ease-in-out;
+            -webkit-transition: -webkit-transform 0.5s ease-in-out;
+        }
+    }
+}
+
+// * * * Navigation * * *
+.nav-bar--mobile {
+    overflow: hidden;
+    max-height: 0;
+
+    -webkit-transform: translate(-100%, 0);
+    transform: translate(-150%, 0);
+
+    transition: all 0.5s ease-in-out;
+    background: #F0F2F3;
+    background-attachment: fixed;
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 0h1L0 6V5zm1 5v1H5z' fill-opacity='.075' fill-rule='evenodd'/%3E%3C/svg%3E");
+    padding-top: 2em;
+
+    display: none;
+    overflow: scroll;
+        
+    a {
+        display: block;
+        font-size: 2.427em;
+        line-height: 1.25;
+        padding: 0.5em 0;
+    }
+    
+    @media (max-width:920px) {
+        display: block;
+    }
+}
+
+@media (max-width:920px) {
+    .nav-bar--burger.open ~ .nav-bar--mobile {
+        width: 100%;
+        min-height: 100%;
+        
+        position: fixed;
+        left: 0;
+        top: 61px;
+
+        transform: translate(0, 0);
+        transition: all 0.5s ease-in-out;
+    }
+}
