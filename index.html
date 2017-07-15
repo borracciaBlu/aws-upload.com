@@ -1,0 +1,151 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    
+    <title>aws-upload - A delicious CLI Tool for uploading files to ec2</title>
+
+    <meta name="keywords" content="rsync, aws, upload, ec2, php, composer">
+    <meta name="description" content="A delicious CLI Tool for uploading files to ec2. Clean, tab ready, rsync powered.">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="aws-upload">
+    <meta property="og:description" content="aws-upload - A delicious CLI Tool for uploading files to ec2">
+    <meta property="og:image" content="https://aws-upload.io/images/aws-upload-logo.png">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="aws-upload">
+    <meta name="twitter:description" content="aws-upload - A delicious CLI Tool for uploading files to ec2">
+    <meta name="twitter:image" content="https://aws-upload.io/images/aws-upload-logo.png">
+
+    <meta name="application-name" content="aws-upload"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimal-ui" />
+
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="apple-touch-icon" sizes="76x76" href="favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicons/favicon-16x16.png">
+    <link rel="manifest" href="favicons/manifest.json">
+    <link rel="mask-icon" href="favicons/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="theme-color" content="#ffffff">
+
+    <link rel="canonical" href="https://aws-upload.io/" />
+    <style>
+a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,caption,center,cite,code,dd,del,details,dfn,div,dl,dt,em,embed,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,ins,kbd,label,legend,li,mark,menu,nav,object,ol,output,p,pre,q,ruby,s,samp,section,small,span,strike,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,tt,u,ul,var,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:after,blockquote:before,q:after,q:before{content:"";content:none}table{border-collapse:collapse;border-spacing:0}.container{margin:auto}@media (min-width:1150px){.container{width:1127.3px}}@media (max-width:1150px){.container{width:960px}}@media (max-width:980px){.container{width:calc(100% - 3em)}}@media (max-width:800px){.container{width:calc(100% - 3em)}}@media (max-width:480px){.container{width:calc(100% - 2em)}}html{background:#0d3144}body,html.doc{background:#fff}body{font-size:16px;color:#0d3144;font-family:Open Sans,Helvetica Neue,Arial,sans-serif;font-weight:400}.h1,h1{font-size:2.618em}.h1,.h2,h1,h2{line-height:1;padding-bottom:24px}.h2,h2{font-size:2.427em}strong{font-weight:700}em{font-style:italic}code{background:#eee;color:#fa4957;padding:3px 5px;margin:0 2px;border-radius:2px;white-space:nowrap;font-family:Source Code Pro}blockquote{padding:23px 24px 1px;margin:2em 0;border-left-width:4px;border-left-style:solid;background-color:#f7f8f9;position:relative;border-bottom-right-radius:2px;border-top-right-radius:2px;border-left-color:#0d3144}.a,a{text-decoration:none}li{line-height:24px}ul ul{padding-left:24px}li li{list-style-type:disc;color:#fa4957}li li a{color:#0d3144}.btn-main{padding:.75em 2em;border-radius:2em;display:inline-block;color:#fff;background-color:#0d3144;transition:all .15s ease;box-sizing:border-box;border:1px solid #0d3144}.btn-main:hover{background-color:#ff6058;border:1px solid #ff6058}.btn-sec{padding:.75em 2em;border-radius:2em;display:inline-block;color:#0d3144;background-color:#fff;transition:all .15s ease;box-sizing:border-box;border:1px solid #0d3144}.btn-sec:hover{color:#ff6058;border:1px solid #ff6058}.nav-bar{height:60px;border-bottom:1px solid #fa4957;margin-bottom:11px;background:#fff;box-shadow:0 0 1px 1px rgba(13,49,68,.15)}@media (max-width:920px){.nav-bar{text-align:center;position:fixed;width:100%;top:0;z-index:1}}.nav-bar.fixed{position:fixed;top:0;width:100%;z-index:1}.nav-bar--menu{float:right;padding:22px 0}@media (max-width:920px){.nav-bar--menu{display:none}}.nav-bar--link{color:#0d3144;font-size:14px;padding:0 0 0 12px}.nav-bar--link:hover{color:#ff6058}.nav-bar--logo{height:36px;padding:12px 0}@media (max-width:920px){.nav-bar--logo{height:24px;padding:18px 0}}.nav-bar--burger{display:none;border:0;background:none;outline:0;padding:0;cursor:pointer;border-bottom:2px solid #0d3144;width:28px;transition:border-bottom 1s ease-in-out;-webkit-transition:border-bottom 1s ease-in-out}@media (max-width:920px){.nav-bar--burger{display:inline-block;margin-top:23px;position:absolute;right:20px}}.nav-bar--burger::-moz-focus-inner{border:0;padding:0}.nav-bar--burger:after,.nav-bar--burger:before{content:"";display:block;border-bottom:2px solid #0d3144;width:100%;margin-bottom:5px;transition:-webkit-transform .5s ease-in-out;transition:transform .5s ease-in-out;transition:transform .5s ease-in-out,-webkit-transform .5s ease-in-out;-webkit-transition:-webkit-transform .5s ease-in-out}.nav-bar--burger.open{border-bottom:2px solid transparent;transition:border-bottom .8s ease-in-out;-webkit-transition:border-bottom .8s ease-in-out;margin-top:29px}.nav-bar--burger.open:before{transform:rotate(-405deg) translateY(1px) translateX(-1px);-webkit-transform:rotate(-405deg) translateY(1px) translateX(-1px)}.nav-bar--burger.open:after,.nav-bar--burger.open:before{transition:-webkit-transform .5s ease-in-out;transition:transform .5s ease-in-out;transition:transform .5s ease-in-out,-webkit-transform .5s ease-in-out;-webkit-transition:-webkit-transform .5s ease-in-out}.nav-bar--burger.open:after{transform:rotate(405deg) translateY(-4px) translateX(-5px);-webkit-transform:rotate(405deg) translateY(-4px) translateX(-5px)}.nav-bar--mobile{overflow:hidden;max-height:0;-webkit-transform:translate(-100%);transform:translate(-150%);transition:all .5s ease-in-out;background:#f0f2f3;background-attachment:fixed;background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 0h1L0 6V5zm1 5v1H5z' fill-opacity='.075' fill-rule='evenodd'/%3E%3C/svg%3E");padding-top:2em;display:none;overflow:scroll}.nav-bar--mobile a{display:block;font-size:2.427em;line-height:1.25;padding:.5em 0}@media (max-width:920px){.nav-bar--mobile{display:block}}@media (max-width:920px){.nav-bar--burger.open~.nav-bar--mobile{width:100%;min-height:100%;position:fixed;left:0;top:61px;-webkit-transform:translate(0);transform:translate(0);transition:all .5s ease-in-out}}.jumbo{padding:5em 0;background:#fff;overflow:hidden}.jumbo--text{width:40%;float:left;padding:6em 0}@media (max-width:768px){.jumbo--text{width:80%;float:none;padding:6em 0;margin:auto;text-align:center}}@media (max-width:500px){.jumbo--text h1{font-size:2em;line-height:1.2}}@media (max-width:400px){.jumbo--text{width:100%}}.jumbo--img{width:60%;float:left;text-align:right}@media (max-width:1025px){.jumbo--img img{width:600px}}@media (max-width:768px){.jumbo--img{width:100%;float:none;margin:auto;text-align:center}}@media (max-width:621px){.jumbo--img{display:none}}
+</style>
+</head>
+<body>
+
+    <div class="nav-bar">
+        <div class="container">
+            <button class="nav-bar--burger" onclick="javascript: this.classList.toggle('open');"></button>
+            
+            <img src="images/aws-upload-logo.png" 
+                 alt="aws-upload - A delicious CLI Tool for uploading files to ec2"
+                 class="nav-bar--logo">
+
+            <div class="nav-bar--menu">
+                <a href="./guide.html" class="nav-bar--link">Guide ↗</a>
+                <a href="https://github.com/borracciaBlu/aws-upload" class="nav-bar--link">Github ↗</a>
+            </div>
+            <div class="nav-bar--mobile">
+                <a href="./guide.html" class="nav-bar--link">Guide ↗</a>
+                <a href="https://github.com/borracciaBlu/aws-upload" class="nav-bar--link">Github ↗</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="jumbo">
+        <div class="container">
+
+            <div class="jumbo--text">
+                <h1>
+                    A delicious CLI Tool for uploading files to ec2
+                </h1>
+                <a href="./guide.html" class="btn-main">Get Started</a>
+                <a href="https://github.com/borracciaBlu/aws-upload" target="_blank" rel="no-follow" class="btn-sec">Github</a>
+            </div>
+
+            <div class="jumbo--img">
+                <img src="https://cloud.githubusercontent.com/assets/2061731/24436410/0e6f00c6-1487-11e7-9e79-dc6ecd5ab152.gif" alt="">
+            </div>
+
+            <br style="clear: both;">
+        </div>
+    </div>
+
+    <div class="desc">
+        <div class="container">
+            <div class="sections--block">
+                <div class="section">
+                    <h2>
+                        Flexible
+                    </h2>
+                    <p>
+                        Configure each project with custom settings
+                    </p> 
+                </div>
+                
+                <div class="section">
+                    <h2>
+                        Fast
+                    </h2>
+                    <p>
+                    Rsync powered for the best performance on deploy
+                    </p>
+                </div>
+
+                <div class="section">
+                    <h2>
+                        Tab ready
+                    </h2>
+                    <p>
+                        Explore all your projects with a tab
+                    </p>
+                </div>
+            </div>
+            <br style="clear:both;">
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="container">
+            Source code licensed <a href="http://opensource.org/licenses/mit-license.php" target="_blank"  rel="no-follow" >MIT</a>
+        </div>
+    </div>
+
+<link rel="stylesheet" href="./css/main.css" />
+
+<script> 
+if (document.domain === "www.aws-upload.io" ||
+    document.domain === "aws-upload.io") {
+
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-xxxx', 'auto');
+  ga('send', 'pageview');
+}
+</script>
+
+<script>
+   WebFontConfig = {
+      google: { families: ['Open Sans:400'] }
+   };
+
+   (function(d) {
+      var wf = d.createElement('script'), s = d.scripts[0];
+      wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js';
+      s.parentNode.insertBefore(wf, s);
+   })(document);
+</script>
+
+<script>
+    
+</script>
+
+</body>
+</html>
