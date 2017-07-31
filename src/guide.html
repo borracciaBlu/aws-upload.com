@@ -2,7 +2,7 @@
 <html class="no-js doc">
 <head>
     <meta charset="utf-8">
-    
+
     <title>aws-upload - A delicious CLI Tool for uploading files to ec2 : Guide</title>
 
     <meta name="keywords" content="rsync, aws, upload, ec2, php, composer">
@@ -38,20 +38,25 @@
     <div class="nav-bar fixed">
         <div class="container">
             <button class="nav-bar--burger" onclick="javascript: this.classList.toggle('open');"></button>
-            
+
             <a href="./">
-                <img src="images/aws-upload-logo.png" 
+                <img src="images/aws-upload-logo.png"
                      alt="aws-upload - A delicious CLI Tool for uploading files to ec2"
                      class="nav-bar--logo">
             </a>
 
             <div class="nav-bar--menu">
-                <a href="" class="nav-bar--link">Guide ↗</a>
+                <a href="./" class="nav-bar--link">Home ↗</a>
+                <a href="./guide.html" class="nav-bar--link">Guide ↗</a>
                 <a href="https://github.com/borracciaBlu/aws-upload" class="nav-bar--link">Github ↗</a>
             </div>
 
             <div class="nav-bar--mobile">
                 <div class="doc--sidebar">
+                     <a href="./" class="nav-bar--link">Home ↗</a>
+                    <a href="./guide.html" class="nav-bar--link">Guide ↗</a>
+                    <a href="https://github.com/borracciaBlu/aws-upload" class="nav-bar--link">Github ↗</a>
+
                     <h2>Guide</h2>
                     <h3>Introduction</h3>
                     <ul>
@@ -72,7 +77,7 @@
                         <ul>
                             <li><a href="#installation">Installation</a></li>
                             <li><a href="#enabling-tab-completion">Enabling tab-completion</a></li>
-                            
+
                             <li><a href="#speaking-aws-upload">Speaking aws-upload: proj, env, and keys</a></li>
                             <li><a href="#your-first-deploy">Your first deploy</a></li>
                         </ul>
@@ -118,7 +123,7 @@
                     <ul>
                         <li><a href="#installation">Installation</a></li>
                         <li><a href="#enabling-tab-completion">Enabling tab-completion</a></li>
-                        
+
                         <li><a href="#speacking-aws-upload">Speacking aws-upload: proj, env and keys</a></li>
                         <li><a href="#your-first-deploy">Your first deploy</a></li>
                     </ul>
@@ -141,15 +146,15 @@
 
         <div class="doc--body">
             <div class="doc--body--container">
-                
+
             <a id="the-main-idea" class="anchor"></a>
             <h1>The main idea</h1>
-            
+
             <a id="what-is-aws-upload" class="anchor"></a>
             <h2>
                 <span>#</span> What is aws-upload?
             </h2>
-            <p>aws-upload is a <strong>CLI Tool </strong> to rapid deploy files on your server. 
+            <p>aws-upload is a <strong>CLI Tool </strong> to rapid deploy files on your server.
             Unlike other scripts or tools, aws-upload is designed to maximize efficiency, speed, and automation. </p>
             <p>The core functionality is based on rsync to deploy only what you need. It will automatically compress and upload only the files you change it. </p>
 
@@ -159,13 +164,40 @@
             </h2>
             <p>The project was born because a frustration I got at work.
             We had a lot of small projects in place and no deploy system. </p>
-            <p>At the beginning, we were using just standard FTP clients (eg. FileZilla).</p>
-            <p>But this process was just tedious and full of errors.
-            Find the folders, upload only the correct files (do not upload .git folders for example).</p>
-            <p>Later on, I start using rsync, but the command was just too verbose, especially when you start to exclude some folder or file from the upload.</p>
-            <p>I start to use <code>alias</code> then, but it was messy and painful to debug and to share with my colleagues.</p>
-            <p>If you did a mistake in the alias, you have to change the bash script and reload the shell.</p>
-            <p>At the end, I finished writing a PHP script to fix the problem: aws-upload was born.</p>
+
+            <h3>FTP clients</h3>
+            <p>At the beginning, I was using just standard <i>FTP clients</i> (eg. <i>FileZilla</i>). But this process was just tedious and full of errors.</p>
+
+            <p>
+                <u>There are at least two main issues:</u><br><br>
+                <b>Find the file:</b> this process probably was the most time consuming and frustrating.
+                You have to click through all the tree on each folder till you reach the file you want to upload. And then repeat the process for each file you want to upload. Not efficient at all.
+
+                <br><br>
+
+                <b>Upload only the correct file:</b> sometimes for laziness, you may be tempted to drag and drop a full folder. Big mistake, chances are you are uploading as well some file you may not want to upload.
+                Think about of your <code>.git</code> folder for example.
+            </p>
+
+            <p>Later on, I start using <code>rsync</code> with <code>alias</code>.</p>
+
+            <h3>Alias</h3>
+
+            <p>
+                I believe that when you reach a critical amount of data on your <i>.rc file</i> (<code>.zshrc</code>, <code>.aliases</code>), the full experience with <code>alias</code> is broken.
+            </p>
+
+            <p>
+                <u>There are at least three main issues:</u><br><br>
+
+                <b>Setup:</b> when you setup an alias is tedious. Long strings are risky to edit and manipulate. Reload the shell all the time you edit it's quite frustrating. It's better in real time. <br><br>
+
+                <b>Debug:</b> if you make a mistake in your alias you won't receive specific error messages to help you and make the process painless. It's better with some check. <br><br>
+
+                <b>Structure:</b> crawl a huge file and edit a three line command without any structure it's not fun. It's better to edit with scope and focus.
+            </p>
+
+            <p>At the end, I finished writing a PHP script with some <a href="#the-file-structure">json files</a> to fix the problem: aws-upload was born.</p>
 
             <a id="why-not" class="anchor"></a>
             <h2>
@@ -231,12 +263,44 @@
             </h2>
 
             <blockquote>
-            <p>The tab completion is done by the shell you are using it.</p>
+            <p>The tab completion is done by the shell you are using.</p>
+            <p>Right now the only shell supported is <a href="http://www.zsh.org/">zsh</a> in combination with <a href="https://github.com/robbyrussell/oh-my-zsh">oh-my-zsh</a>.</p>
             </blockquote>
 
-            <p>Right now the only shell supported is <a href="http://www.zsh.org/">zsh</a> in combination with <a href="https://github.com/robbyrussell/oh-my-zsh">oh-my-zsh</a>.</p>
-            <p>In order to achieve the tab-completion like in the screen shot, you have to install the zsh plugin aws-upload-zsh.</p>
-            <p>To install aws-upload-zsh follow the instructions <a href="https://github.com/borracciaBlu/aws-upload-zsh">here</a>.</p>
+            <p>
+                The auto-complete function is done with an oh-my-zsh plugin. To enable the autocomplete you can type:
+            </p>
+
+            <figure class="highlight bash">
+                <table>
+                    <tbody>
+                        <tr><td class="code">
+                            <pre>
+                                <div class="line">$ aws-upload autocomplete</div>
+                                <div class="line"><span class="comment"># download, install and enable the oh-my-zsh plugin</span></div>
+                            </pre>
+                        </td></tr>
+                    </tbody>
+                </table>
+            </figure>
+
+            <p>
+                This command will download, install and enable the oh-my-zsh plugin for you.
+            </p>
+
+            <h3>Note:</h3>
+            <p>
+                The auto-complete function relies on a specific set of your system. In particular, it expects your system to have the following software already installed :
+            </p>
+            <ul>
+                <li>git</li>
+                <li>zsh</li>
+                <li>oh-my-zsh</li>
+            </ul>
+
+
+            <h3>Manual Installation:</h3>
+            <p>The auto-complete is an oh-my-zsh plugin as said before. If you want to install the plugin manually, follow the instructions on the <a href="https://github.com/borracciaBlu/aws-upload-zsh">aws-upload-zsh documentation</a>.</p>
 
             <a id="speaking-aws-upload" class="anchor"></a>
             <h2>
@@ -304,7 +368,7 @@
 
             <p>This command will generate a setting file for this key. Now you have to edit it.<br>
             To edit you can type:</p>
-            
+
             <figure class="highlight bash">
                 <table>
                     <tbody>
@@ -382,7 +446,7 @@
             <h2>
                 <span>#</span> Examples
             </h2>
-            
+
             <h3>Deploy on ec2 / ubuntu AMI</h3>
             <figure class="highlight js">
                 <table>
@@ -434,7 +498,7 @@
 
 <link rel="stylesheet" href="./css/main.css" />
 
-<script> 
+<script>
 if (document.domain === "www.aws-upload.com" ||
     document.domain === "aws-upload.com") {
 
