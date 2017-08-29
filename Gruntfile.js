@@ -99,6 +99,7 @@ module.exports = function(grunt) {
                 files: {
                     'dist/index.html': 'dist/index.html',
                     'dist/guide.html': 'dist/guide.html',
+                    'dist/api.html': 'dist/api.html',
                 }
             }
         },
