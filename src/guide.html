@@ -79,6 +79,7 @@
                         <ul>
                             <li><a href="#installation">Installation</a></li>
                             <li><a href="#enabling-tab-completion">Enabling tab-completion</a></li>
+                            <li><a href="#update">Update</a></li>
 
                             <li><a href="#speaking-aws-upload">Speaking aws-upload: proj, env, and keys</a></li>
                             <li><a href="#your-first-deploy">Your first deploy</a></li>
@@ -125,7 +126,7 @@
                     <ul>
                         <li><a href="#installation">Installation</a></li>
                         <li><a href="#enabling-tab-completion">Enabling tab-completion</a></li>
-
+                        <li><a href="#update">Update</a></li>
                         <li><a href="#speaking-aws-upload">Speaking aws-upload: proj, env and keys</a></li>
                         <li><a href="#your-first-deploy">Your first deploy</a></li>
                     </ul>
@@ -303,6 +304,34 @@
 
             <h3>Manual Installation:</h3>
             <p>The auto-complete is an oh-my-zsh plugin as said before. If you want to install the plugin manually, follow the instructions on the <a href="https://github.com/borracciaBlu/aws-upload-zsh">aws-upload-zsh documentation</a>.</p>
+
+            <a id="update" class="anchor"></a>
+            <h2>
+                <span>#</span> Update
+            </h2>
+
+            <p>
+                To update <code>aws-upload</code> to the latest version, run the <code>self-update</code> command. It will replace your <code>aws-upload</code> with the latest version.
+            </p>
+
+            <p>
+                If you have the tab-completion enabled run <code>autocomplete</code> to update the zsh plugin as well.
+            </p>
+
+            <figure class="highlight bash">
+                <table>
+                    <tbody>
+                        <tr><td class="code">
+                            <pre>
+                                <div class="line"><span class="comment"># update latest stable</span></div>
+                                <div class="line">$ aws-upload selfupdate</div>
+                                <div class="line"><span class="comment"># update tab-completion plugin</span></div>
+                                <div class="line">$ aws-upload autocomplete</div>
+                            </pre>
+                        </td></tr>
+                    </tbody>
+                </table>
+            </figure>
 
             <a id="speaking-aws-upload" class="anchor"></a>
             <h2>
