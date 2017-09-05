@@ -83,6 +83,9 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
                                 <li><a href="#new">new</a></li>
                                 <li><a href="#edit">edit</a></li>
                                 <li><a href="#copy">copy</a></li>
+                                <li><a href="#delete">delete</a></li>
+                                <li><a href="#import">import</a></li>
+                                <li><a href="#export">export</a></li>
                                 <li><a href="#check">check</a></li>
                                 <li><a href="#selfupdate">selfupdate</a></li>
                                 <li><a href="#autocomplete">autocomplete</a></li>
@@ -141,6 +144,9 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
                             <li><a href="#new">new</a></li>
                             <li><a href="#edit">edit</a></li>
                             <li><a href="#copy">copy</a></li>
+                            <li><a href="#delete">delete</a></li>
+                            <li><a href="#import">import</a></li>
+                            <li><a href="#export">export</a></li>
                             <li><a href="#check">check</a></li>
                             <li><a href="#selfupdate">selfupdate</a></li>
                             <li><a href="#autocomplete">autocomplete</a></li>
@@ -188,7 +194,7 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
                         <tr><td class="code">
                             <pre>
                                 <div class="line"><span class="comment"># Usage:</span></div>
-                                <div class="line">aws-upload &lt;proj&gt; &lt;env&gt; [--simulate] [-v|--verbose]</div>
+                                <div class="line">aws-upload &lt;proj&gt; &lt;env&gt; [--simulate|--dry-run] [-v|--verbose]</div>
                                 <div class="line"></div>
                                 <div class="line">aws-upload keys [-q|--quiet]</div>
                                 <div class="line">aws-upload projs [-q|--quiet]</div>
@@ -197,6 +203,9 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
                                 <div class="line">aws-upload new &lt;key&gt;</div>
                                 <div class="line">aws-upload edit &lt;key&gt;</div>
                                 <div class="line">aws-upload copy &lt;src&gt; &lt;dest&gt;</div>
+                                <div class="line">aws-upload delete &lt;key&gt;</div>
+                                <div class="line">aws-upload import &lt;src&gt;</div>
+                                <div class="line">aws-upload export &lt;key&gt; [&lt;dest&gt;]</div>
                                 <div class="line">aws-upload check &lt;key&gt;</div>
                                 <div class="line"></div>
                                 <div class="line">aws-upload (selfupdate | self-update)</div>
@@ -214,6 +223,7 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
 
                                 <div class="line">-h | --help</div>
                                 <div class="line">-V | --version</div>
+                                <div class="line">--dry-run</div>
                                 <div class="line">--simulate</div>
 
                             </pre>
@@ -509,6 +519,152 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
                                 <div class="line"><span class="comment"># src:  blog.dev</span></div>
                                 <div class="line"><span class="comment"># dest: blog.staging</span></div>
                                 <div class="line">$ aws-upload copy blog.dev blog.staging</div>
+                            </pre>
+                        </td></tr>
+                    </tbody>
+                </table>
+            </figure>
+
+            <a id="delete" class="anchor"></a>
+            <h2>
+                <span>#</span> delete
+            </h2>
+
+            <h3>Syntax</h3>
+
+            <figure class="highlight bash">
+                <table>
+                    <tbody>
+                        <tr><td class="code">
+                            <pre>
+                                <div class="line">delete &lt;key&gt;</div>
+                            </pre>
+                        </td></tr>
+                    </tbody>
+                </table>
+            </figure>
+
+            <p>
+                The <code>delete</code> command is a shortcut to help you delete a setting file.<br>
+                As argument, it accepts an existing key <code>&lt;proj&gt;</code>.<code>&lt;env&gt;</code>.
+            </p>
+
+            <h3>Usage</h3>
+
+            <figure class="highlight bash">
+                <table>
+                    <tbody>
+                        <tr><td class="code">
+                            <pre>
+                                <div class="line"><span class="comment"># delete blog.dev.json</span></div>
+                                <div class="line">$ aws-upload delete blog.dev</div>
+                            </pre>
+                        </td></tr>
+                    </tbody>
+                </table>
+            </figure>
+
+            <a id="import" class="anchor"></a>
+            <h2>
+                <span>#</span> import
+            </h2>
+
+            <h3>Syntax</h3>
+
+            <figure class="highlight bash">
+                <table>
+                    <tbody>
+                        <tr><td class="code">
+                            <pre>
+                                <div class="line">import &lt;src&gt;</div>
+                            </pre>
+                        </td></tr>
+                    </tbody>
+                </table>
+            </figure>
+
+            <p>
+                The <code>import</code> command to help you import a setting file.<br>
+                As argument, it accepts a <code>&lt;src&gt;</code> path which is the path of an existing json file.
+            </p>
+
+            <h3>Usage</h3>
+
+            <figure class="highlight bash">
+                <table>
+                    <tbody>
+                        <tr><td class="code">
+                            <pre>
+                                <div class="line"><span class="comment"># import setting file ~/Desktop/blog.dev.json</span></div>
+                                <div class="line">$ aws-upload import ~/Desktop/blog.dev.json</div>
+                            </pre>
+                        </td></tr>
+                    </tbody>
+                </table>
+            </figure>
+
+            <a id="export" class="anchor"></a>
+            <h2>
+                <span>#</span> export
+            </h2>
+
+            <h3>Syntax</h3>
+
+            <figure class="highlight bash">
+                <table>
+                    <tbody>
+                        <tr><td class="code">
+                            <pre>
+                                <div class="line">export &lt;key&gt; [&lt;dest&gt;]</div>
+                            </pre>
+                        </td></tr>
+                    </tbody>
+                </table>
+            </figure>
+
+            <p>
+                The <code>export</code> command to help you export a setting file.<br>
+                As argument, it accepts an existing key <code>&lt;key&gt;</code> and an optional value <code>&lt;dest&gt;</code> path which is the path of an existing folder.
+            </p>
+
+            <p>
+                The basic behavior is that <code>aws-upload</code> will create a copy of the specified setting file in the current working directory.
+            </p>
+
+            <p>
+                If the <code>&lt;dest&gt;</code> path is specified the setting file will be copied in there.
+            </p>
+
+            <h3>Usage</h3>
+
+            <figure class="highlight bash">
+                <table>
+                    <tbody>
+                        <tr><td class="code">
+                            <pre>
+                                <div class="line"><span class="comment"># export blog.dev in current working directory</span></div>
+                                <div class="line">$ cd ~/</div>
+                                <div class="line">$ aws-upload export blog.dev</div>
+
+                                <div class="line"><span class="comment"># create ~/blog.dev.json</span></div>
+
+                            </pre>
+                        </td></tr>
+                    </tbody>
+                </table>
+            </figure>
+
+            <figure class="highlight bash">
+                <table>
+                    <tbody>
+                        <tr><td class="code">
+                            <pre>
+                                <div class="line"><span class="comment"># export blog.dev in specific folder</span></div>
+                                <div class="line">$ cd ~/</div>
+                                <div class="line">$ aws-upload export blog.dev ~/Desktop</div>
+
+                                <div class="line"><span class="comment"># create ~/Desktop/blog.dev.json</span></div>
+
                             </pre>
                         </td></tr>
                     </tbody>
