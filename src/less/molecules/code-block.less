@@ -10,6 +10,24 @@
     padding: 0.8em 0.8em 0em;
     border-radius: 2px;
     margin-bottom: 24px;
+
+    &::-webkit-scrollbar {
+        height: 8px;
+        width: 8px;
+    }
+
+    &::-webkit-scrollbar-corner {
+        display: none;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: rgba(0, 0, 0, 0);
+    }
+
+    &:hover::-webkit-scrollbar-thumb {
+        background-color: rgba(13, 49, 68, 0.36);
+        border-radius: 8px;
+    }
 }
 .highlight table, .highlight tr, .highlight td {
     width: 100%;
