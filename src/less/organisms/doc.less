@@ -27,7 +27,12 @@
 
     @media (min-width: 1400px) {
         padding-left: 3em;
-        margin-left: ~"calc(((100% - 1127.3px) / 2) - 3em)";
+    }
+
+
+    @media (min-width:1151px) {
+        margin-left: 0;
+        padding-left: 44px;
     }
 
     @media (max-width: 920px) {
@@ -151,6 +156,11 @@
 
     .doc--body--container {
         max-width: 600px;
+        margin: auto;
+
+        @media (max-width:900px) {
+            margin: 0;
+        }
     }
 
     .anchor {
@@ -182,7 +192,7 @@
     }
 
     p {
-        line-height: 1.33;
+        line-height: 1.5;
         margin-bottom: 24px;
         font-size: 0.927em;
     }

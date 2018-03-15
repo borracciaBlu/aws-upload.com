@@ -12,12 +12,19 @@
         top: 0px;
         z-index: 10;
     }
-    
+
     &.fixed {
         position: fixed;
         top: 0px;
         width: 100%;
         z-index: 10;
+
+        @media (min-width:1151px) {
+            .container {
+                width: auto;
+                padding: 0 44px;
+            }
+        }
     }
 }
 
@@ -40,7 +47,7 @@
     }
 }
 
-.nav-bar--logo { 
+.nav-bar--logo {
     height: 36px;
     padding: 12px 0;
 
@@ -54,7 +61,7 @@
 .nav-bar--burger {
     // 28px: 28px;
     // 4px: 4px;
-    
+
     display: none;
     border: 0;
     background: none;
@@ -66,8 +73,8 @@
     width: 28px;
 
     transition: border-bottom 1s ease-in-out;
-    -webkit-transition: border-bottom 1s ease-in-out; 
-    
+    -webkit-transition: border-bottom 1s ease-in-out;
+
 
     @media (max-width:920px) {
         display: inline-block;
@@ -80,7 +87,7 @@
     &::-moz-focus-inner {
         border: 0;
         padding: 0;
-    }    
+    }
 
     &:before {
         content: "";
@@ -88,8 +95,8 @@
         border-bottom: 2px solid #0d3144;
         width: 100%;
         margin-bottom: 5px;
-        transition: transform 0.5s ease-in-out;    
-        -webkit-transition: -webkit-transform 0.5s ease-in-out;        
+        transition: transform 0.5s ease-in-out;
+        -webkit-transition: -webkit-transform 0.5s ease-in-out;
     }
 
     &:after {
@@ -110,14 +117,14 @@
 
         &:before {
             transform: rotate(-405deg) translateY(1px) translateX(-1px);
-            -webkit-transform: rotate(-405deg) translateY(1px) translateX(-1px);      
+            -webkit-transform: rotate(-405deg) translateY(1px) translateX(-1px);
             transition: transform 0.5s ease-in-out;
             -webkit-transition: -webkit-transform 0.5s ease-in-out;
         }
 
         &:after {
-            transform: rotate(405deg) translateY(-4px) translateX(-5px); 
-            -webkit-transform: rotate(405deg) translateY(-4px) translateX(-5px);       
+            transform: rotate(405deg) translateY(-4px) translateX(-5px);
+            -webkit-transform: rotate(405deg) translateY(-4px) translateX(-5px);
             transition: transform 0.5s ease-in-out;
             -webkit-transition: -webkit-transform 0.5s ease-in-out;
         }
@@ -140,7 +147,7 @@
 
     display: none;
     overflow: scroll;
-        
+
     .nav-bar--link {
         display: block;
         font-size: 2.427em;
@@ -153,7 +160,7 @@
         border-top: 1px solid #ddd;
         padding-top: 24px;
     }
-    
+
     @media (max-width:920px) {
         display: block;
     }
@@ -163,7 +170,7 @@
     .nav-bar--burger.open ~ .nav-bar--mobile {
         width: 100%;
         min-height: 100%;
-        
+
         position: fixed;
         left: 0;
         top: 61px;
