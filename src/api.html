@@ -30,7 +30,7 @@
     <link rel="mask-icon" href="favicons/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="theme-color" content="#ffffff">
 
-    <link rel="canonical" href="http://aws-upload.com/" />
+    <link rel="canonical" href="https://aws-upload.com/" />
     <link href=".//css/inline-doc.css?__inline=true" rel="stylesheet" data-inlined="true" />
 </head>
 <body>
@@ -75,6 +75,7 @@
                     <ul>
                         <li>
                             <ul>
+                                <li><a href="#diff">diff</a></li>
                                 <li><a href="#keys">keys</a></li>
                                 <li><a href="#projs">projs</a></li>
                                 <li><a href="#envs">envs</a></li>
@@ -136,6 +137,7 @@
                 <ul>
                     <li>
                         <ul>
+                            <li><a href="#diff">diff</a></li>
                             <li><a href="#keys">keys</a></li>
                             <li><a href="#projs">projs</a></li>
                             <li><a href="#envs">envs</a></li>
@@ -193,6 +195,7 @@
                             <pre>
                                 <div class="line"><span class="comment"># Usage:</span></div>
                                 <div class="line">aws-upload &lt;proj&gt; &lt;env&gt; [--simulate|--dry-run] [-v|--verbose]</div>
+                                <div class="line">aws-upload diff [--simulate|--dry-run] [-v|--verbose]</div>
                                 <div class="line"></div>
                                 <div class="line">aws-upload keys [-q|--quiet]</div>
                                 <div class="line">aws-upload projs [-q|--quiet]</div>
@@ -274,6 +277,48 @@
 
             <!-- Str: Available commands -->
             <h1>Available commands</h1>
+
+            <a id="diff" class="anchor"></a>
+            <h2>
+                <span>#</span> diff
+            </h2>
+
+            <h3>Syntax</h3>
+
+            <figure class="highlight bash">
+                <table>
+                    <tbody>
+                        <tr><td class="code">
+                            <pre>
+                                <div class="line">diff</div>
+                            </pre>
+                        </td></tr>
+                    </tbody>
+                </table>
+            </figure>
+
+            <p>
+                The <code>diff</code> command prints all the files in local that are not yet in sync with the remote host.<br>
+
+                As argument, it accepts a key <code>&lt;proj&gt;</code>.<code>&lt;env&gt;</code>.
+            </p>
+
+            <h3>Usage</h3>
+
+            <figure class="highlight bash">
+                <table>
+                    <tbody>
+                        <tr><td class="code">
+                            <pre>
+                                <div class="line"><span class="comment"># See all the files not synced yet</span></div>
+                                <div class="line"><span class="comment"># proj: blog</span></div>
+                                <div class="line"><span class="comment"># env:  dev</span></div>
+                                <div class="line">$ aws-upload diff blog.dev</div>
+                            </pre>
+                        </td></tr>
+                    </tbody>
+                </table>
+            </figure>
 
             <a id="keys" class="anchor"></a>
             <h2>
