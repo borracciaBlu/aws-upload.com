@@ -1,5 +1,5 @@
 {
-  "name": "aws-upload.io",
+  "name": "aws-upload.com",
   "private": true,
   "version": "0.0.1",
   "dependencies": {
@@ -19,5 +19,8 @@
   },
   "engines": {
     "node": ">=4.2.6"
+  },
+  "scripts": {
+    "build": "grunt build"
   }
 }
