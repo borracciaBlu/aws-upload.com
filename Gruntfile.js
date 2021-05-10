@@ -3,7 +3,7 @@ module.exports = function(grunt) {
 
     // Tasks loaded
     grunt.loadNpmTasks('grunt-inline');
-    grunt.loadNpmTasks('grunt-postcss');
+    grunt.loadNpmTasks('@lodder/grunt-postcss');
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-watch');
@@ -30,7 +30,7 @@ module.exports = function(grunt) {
                     src: [
                         'dist/css/inline-*.css',
                     ]
-                }]  
+                }]
             }
         },
 
@@ -56,13 +56,14 @@ module.exports = function(grunt) {
         // minify css
         // add browser prefixes
         postcss: {
-            options: {
-                processors: [
-                    require('autoprefixer')({browsers: ['last 1 version']}),
-                    require('cssnano')
-                ]
-            },
-            dist: {
+            build: {
+                options: {
+                    map: false,
+                    processors: [
+                        require('autoprefixer')(),
+                        require('cssnano')()
+                    ]
+                },
                 src: 'src/css/*.css'
             }
         },
